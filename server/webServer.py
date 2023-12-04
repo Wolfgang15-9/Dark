@@ -26,7 +26,7 @@ import websockets
 import json
 import app
 
-OLED_connection = 0
+#OLED_connection = 0
 curpath = os.path.realpath(__file__)
 thisPath = "/" + os.path.dirname(curpath)
 
