@@ -15,7 +15,7 @@ import PID
 pwm = Adafruit_PCA9685.PCA9685()
 pwm.set_pwm_freq(50)
 
-for i in range(0,16):
+for i in range(0,11): #pmw numbers
 	exec('pwm%d=300'%i)
 	exec('pwm%d_max=450'%i)
 	exec('pwm%d_min=150'%i)
@@ -137,167 +137,167 @@ def leg_move_diagonal(name, pos, wiggle):
 				pwm.set_pwm(1, 0, pwm1-int(wiggle/4)) #up&<down>
 				pwm.set_pwm(2, 0, pwm2) #out&<in>
 
-	elif name == 'II':
-		if pos == 1:
-			'''
-			   <1>
-			 2--3--4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(3, 0, pwm3) #<back&forth>
-				pwm.set_pwm(4, 0, pwm4+wiggle) #<up>&down
-				pwm.set_pwm(5, 0, pwm5+max_wiggle) #<out>&in
-			else:
-				pwm.set_pwm(3, 0, pwm3) #<back&forth>
-				pwm.set_pwm(4, 0, pwm4+wiggle) #<up>&down
-				pwm.set_pwm(5, 0, pwm5-max_wiggle) #<out>&in		
-		elif pos == 2:
-			'''
-			    1
-			<2>-3--4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(3, 0, pwm3-wiggle) #back&<forth>
-				pwm.set_pwm(4, 0, pwm4-int(wiggle/4)) #<up&down>
-				pwm.set_pwm(5, 0, pwm5) #out&<in>
-			else:
-				pwm.set_pwm(3, 0, pwm3+wiggle) #back&<forth>
-				pwm.set_pwm(4, 0, pwm4+int(wiggle/4)) #up&<down>
-				pwm.set_pwm(5, 0, pwm5) #<out>&in
-		elif pos == 3:
-			'''
-			    1
-			 2-<3>-4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(3, 0, pwm3) #<back&forth>
-				pwm.set_pwm(4, 0, pwm4-int(wiggle/2)) #<up&down>
-				pwm.set_pwm(5, 0, pwm5+int(reach_wiggle/2)) #<out&in>
-			else:
-				pwm.set_pwm(3, 0, pwm3) #<back&forth>
-				pwm.set_pwm(4, 0, pwm4+int(wiggle/2)) #<up&down>
-				pwm.set_pwm(5, 0, pwm5-int(reach_wiggle/2)) #<out&in>
-		elif pos == 4:
-			'''
-			    1
-			 2--3-<4>
-			'''
-			if Set_Direction:
-				pwm.set_pwm(3, 0, pwm3+wiggle) #<back>&forth
-				pwm.set_pwm(4, 0, pwm4-wiggle) #up&<down>
-				pwm.set_pwm(5, 0, pwm5+reach_wiggle) #out&<in>
-			else:
-				pwm.set_pwm(3, 0, pwm3-wiggle) #<back&forth>
-				pwm.set_pwm(4, 0, pwm4+wiggle) #up&<down>
-				pwm.set_pwm(5, 0, pwm5-reach_wiggle) #out&<in>
+	# elif name == 'II':
+	# 	if pos == 1:
+	# 		'''
+	# 		   <1>
+	# 		 2--3--4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(3, 0, pwm3) #<back&forth>
+	# 			pwm.set_pwm(4, 0, pwm4+wiggle) #<up>&down
+	# 			pwm.set_pwm(5, 0, pwm5+max_wiggle) #<out>&in
+	# 		else:
+	# 			pwm.set_pwm(3, 0, pwm3) #<back&forth>
+	# 			pwm.set_pwm(4, 0, pwm4+wiggle) #<up>&down
+	# 			pwm.set_pwm(5, 0, pwm5-max_wiggle) #<out>&in		
+	# 	elif pos == 2:
+	# 		'''
+	# 		    1
+	# 		<2>-3--4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(3, 0, pwm3-wiggle) #back&<forth>
+	# 			pwm.set_pwm(4, 0, pwm4-int(wiggle/4)) #<up&down>
+	# 			pwm.set_pwm(5, 0, pwm5) #out&<in>
+	# 		else:
+	# 			pwm.set_pwm(3, 0, pwm3+wiggle) #back&<forth>
+	# 			pwm.set_pwm(4, 0, pwm4+int(wiggle/4)) #up&<down>
+	# 			pwm.set_pwm(5, 0, pwm5) #<out>&in
+	# 	elif pos == 3:
+	# 		'''
+	# 		    1
+	# 		 2-<3>-4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(3, 0, pwm3) #<back&forth>
+	# 			pwm.set_pwm(4, 0, pwm4-int(wiggle/2)) #<up&down>
+	# 			pwm.set_pwm(5, 0, pwm5+int(reach_wiggle/2)) #<out&in>
+	# 		else:
+	# 			pwm.set_pwm(3, 0, pwm3) #<back&forth>
+	# 			pwm.set_pwm(4, 0, pwm4+int(wiggle/2)) #<up&down>
+	# 			pwm.set_pwm(5, 0, pwm5-int(reach_wiggle/2)) #<out&in>
+	# 	elif pos == 4:
+	# 		'''
+	# 		    1
+	# 		 2--3-<4>
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(3, 0, pwm3+wiggle) #<back>&forth
+	# 			pwm.set_pwm(4, 0, pwm4-wiggle) #up&<down>
+	# 			pwm.set_pwm(5, 0, pwm5+reach_wiggle) #out&<in>
+	# 		else:
+	# 			pwm.set_pwm(3, 0, pwm3-wiggle) #<back&forth>
+	# 			pwm.set_pwm(4, 0, pwm4+wiggle) #up&<down>
+	# 			pwm.set_pwm(5, 0, pwm5-reach_wiggle) #out&<in>
 
-	elif name == 'III':
-		if pos == 1:
-			'''
-			   <1>
-			 2--3--4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(6, 0, pwm6) #<back&forth>
-				pwm.set_pwm(7, 0, pwm7+wiggle) #<up>&down
-				pwm.set_pwm(8, 0, pwm8+max_wiggle) #<out>&in
-			else:
-				pwm.set_pwm(6, 0, pwm6) #<back&forth>
-				pwm.set_pwm(7, 0, pwm7-wiggle) #<up>&down
-				pwm.set_pwm(8, 0, pwm8-reach_wiggle) #<out>&in		
-		elif pos == 2:
-			'''
-			    1
-			<2>-3--4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(6, 0, pwm6-wiggle) #back&<forth>
-				pwm.set_pwm(7, 0, pwm7-wiggle) #up&<down>
-				pwm.set_pwm(8, 0, pwm8+reach_wiggle) #<out>&in
-			else:
-				pwm.set_pwm(6, 0, pwm6+wiggle) #back&<forth>
-				pwm.set_pwm(7, 0, pwm7+wiggle) #up&<down>
-				pwm.set_pwm(8, 0, pwm8-reach_wiggle) #<out>&in
-		elif pos == 3:
-			'''
-			    1
-			 2-<3>-4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(6, 0, pwm6) #<back&forth>
-				pwm.set_pwm(7, 0, pwm7-int(wiggle/2)) #<up&down>
-				pwm.set_pwm(8, 0, pwm8+int(reach_wiggle/2)) #<out&in>
-			else:
-				pwm.set_pwm(6, 0, pwm6) #<back&forth>
-				pwm.set_pwm(7, 0, pwm7+int(wiggle/2)) #<up&down>
-				pwm.set_pwm(8, 0, pwm8-int(reach_wiggle/2)) #<out&in>
-		elif pos == 4:
-			'''
-			    1
-			 2--3-<4>
-			'''
-			if Set_Direction:
-				pwm.set_pwm(6, 0, pwm6+wiggle) #<back>&forth
-				pwm.set_pwm(7, 0, pwm7-int(wiggle/4)) #up&<down>
-				pwm.set_pwm(8, 0, pwm8) #out&<in>
-			else:
-				pwm.set_pwm(6, 0, pwm6-wiggle) #<back&forth>
-				pwm.set_pwm(7, 0, pwm7+int(wiggle/4)) #up&<down>
-				pwm.set_pwm(8, 0, pwm8) #out&<in>
+	# elif name == 'III':
+	# 	if pos == 1:
+	# 		'''
+	# 		   <1>
+	# 		 2--3--4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(6, 0, pwm6) #<back&forth>
+	# 			pwm.set_pwm(7, 0, pwm7+wiggle) #<up>&down
+	# 			pwm.set_pwm(8, 0, pwm8+max_wiggle) #<out>&in
+	# 		else:
+	# 			pwm.set_pwm(6, 0, pwm6) #<back&forth>
+	# 			pwm.set_pwm(7, 0, pwm7-wiggle) #<up>&down
+	# 			pwm.set_pwm(8, 0, pwm8-reach_wiggle) #<out>&in		
+	# 	elif pos == 2:
+	# 		'''
+	# 		    1
+	# 		<2>-3--4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(6, 0, pwm6-wiggle) #back&<forth>
+	# 			pwm.set_pwm(7, 0, pwm7-wiggle) #up&<down>
+	# 			pwm.set_pwm(8, 0, pwm8+reach_wiggle) #<out>&in
+	# 		else:
+	# 			pwm.set_pwm(6, 0, pwm6+wiggle) #back&<forth>
+	# 			pwm.set_pwm(7, 0, pwm7+wiggle) #up&<down>
+	# 			pwm.set_pwm(8, 0, pwm8-reach_wiggle) #<out>&in
+	# 	elif pos == 3:
+	# 		'''
+	# 		    1
+	# 		 2-<3>-4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(6, 0, pwm6) #<back&forth>
+	# 			pwm.set_pwm(7, 0, pwm7-int(wiggle/2)) #<up&down>
+	# 			pwm.set_pwm(8, 0, pwm8+int(reach_wiggle/2)) #<out&in>
+	# 		else:
+	# 			pwm.set_pwm(6, 0, pwm6) #<back&forth>
+	# 			pwm.set_pwm(7, 0, pwm7+int(wiggle/2)) #<up&down>
+	# 			pwm.set_pwm(8, 0, pwm8-int(reach_wiggle/2)) #<out&in>
+	# 	elif pos == 4:
+	# 		'''
+	# 		    1
+	# 		 2--3-<4>
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(6, 0, pwm6+wiggle) #<back>&forth
+	# 			pwm.set_pwm(7, 0, pwm7-int(wiggle/4)) #up&<down>
+	# 			pwm.set_pwm(8, 0, pwm8) #out&<in>
+	# 		else:
+	# 			pwm.set_pwm(6, 0, pwm6-wiggle) #<back&forth>
+	# 			pwm.set_pwm(7, 0, pwm7+int(wiggle/4)) #up&<down>
+	# 			pwm.set_pwm(8, 0, pwm8) #out&<in>
 
-	elif name == 'IV':
-		if pos == 1:
-			'''
-			   <1>
-			 2--3--4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(9, 0, pwm9) #<back&forth>
-				pwm.set_pwm(10, 0, pwm10-wiggle) #<up>&down
-				pwm.set_pwm(11, 0, pwm11-max_wiggle) #<out>&in
-			else:
-				pwm.set_pwm(9, 0, pwm9) #<back&forth>
-				pwm.set_pwm(10, 0, pwm10+wiggle) #<up>&down
-				pwm.set_pwm(11, 0, pwm11+max_wiggle) #<out>&in		
-		elif pos == 2:
-			'''
-			    1
-			<2>-3--4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(9, 0, pwm9+wiggle) #back&<forth>
-				pwm.set_pwm(10, 0, pwm10+int(wiggle/4)) #up&<down>
-				pwm.set_pwm(11, 0, pwm11) #<out>&in
-			else:
-				pwm.set_pwm(9, 0, pwm9-wiggle) #back&<forth>
-				pwm.set_pwm(10, 0, pwm10-int(wiggle/4)) #up&<down>
-				pwm.set_pwm(11, 0, pwm11) #<out>&in
-		elif pos == 3:
-			'''
-			    1
-			 2-<3>-4
-			'''
-			if Set_Direction:
-				pwm.set_pwm(9, 0, pwm9) #<back&forth>
-				pwm.set_pwm(10, 0, pwm10+int(wiggle/2)) #<up&down>
-				pwm.set_pwm(11, 0, pwm11-int(reach_wiggle/2)) #<out&in>
-			else:
-				pwm.set_pwm(9, 0, pwm9) #<back&forth>
-				pwm.set_pwm(10, 0, pwm10-int(wiggle/2)) #<up&down>
-				pwm.set_pwm(11, 0, pwm11+int(reach_wiggle/2)) #<out&in>
-		elif pos == 4:
-			'''
-			    1
-			 2--3-<4>
-			'''
-			if Set_Direction:
-				pwm.set_pwm(9, 0, pwm9-wiggle) #<back>&forth
-				pwm.set_pwm(10, 0, pwm10+wiggle) #up&<down>
-				pwm.set_pwm(11, 0, pwm11-reach_wiggle) #<out>&in
-			else:
-				pwm.set_pwm(9, 0, pwm9+wiggle) #<back&forth>
-				pwm.set_pwm(10, 0, pwm10-wiggle) #up&<down>
-				pwm.set_pwm(11, 0, pwm11+reach_wiggle) #<out>&in
+	# elif name == 'IV':
+	# 	if pos == 1:
+	# 		'''
+	# 		   <1>
+	# 		 2--3--4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(9, 0, pwm9) #<back&forth>
+	# 			pwm.set_pwm(10, 0, pwm10-wiggle) #<up>&down
+	# 			pwm.set_pwm(11, 0, pwm11-max_wiggle) #<out>&in
+	# 		else:
+	# 			pwm.set_pwm(9, 0, pwm9) #<back&forth>
+	# 			pwm.set_pwm(10, 0, pwm10+wiggle) #<up>&down
+	# 			pwm.set_pwm(11, 0, pwm11+max_wiggle) #<out>&in		
+	# 	elif pos == 2:
+	# 		'''
+	# 		    1
+	# 		<2>-3--4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(9, 0, pwm9+wiggle) #back&<forth>
+	# 			pwm.set_pwm(10, 0, pwm10+int(wiggle/4)) #up&<down>
+	# 			pwm.set_pwm(11, 0, pwm11) #<out>&in
+	# 		else:
+	# 			pwm.set_pwm(9, 0, pwm9-wiggle) #back&<forth>
+	# 			pwm.set_pwm(10, 0, pwm10-int(wiggle/4)) #up&<down>
+	# 			pwm.set_pwm(11, 0, pwm11) #<out>&in
+	# 	elif pos == 3:
+	# 		'''
+	# 		    1
+	# 		 2-<3>-4
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(9, 0, pwm9) #<back&forth>
+	# 			pwm.set_pwm(10, 0, pwm10+int(wiggle/2)) #<up&down>
+	# 			pwm.set_pwm(11, 0, pwm11-int(reach_wiggle/2)) #<out&in>
+	# 		else:
+	# 			pwm.set_pwm(9, 0, pwm9) #<back&forth>
+	# 			pwm.set_pwm(10, 0, pwm10-int(wiggle/2)) #<up&down>
+	# 			pwm.set_pwm(11, 0, pwm11+int(reach_wiggle/2)) #<out&in>
+	# 	elif pos == 4:
+	# 		'''
+	# 		    1
+	# 		 2--3-<4>
+	# 		'''
+	# 		if Set_Direction:
+	# 			pwm.set_pwm(9, 0, pwm9-wiggle) #<back>&forth
+	# 			pwm.set_pwm(10, 0, pwm10+wiggle) #up&<down>
+	# 			pwm.set_pwm(11, 0, pwm11-reach_wiggle) #<out>&in
+	# 		else:
+	# 			pwm.set_pwm(9, 0, pwm9+wiggle) #<back&forth>
+	# 			pwm.set_pwm(10, 0, pwm10-wiggle) #up&<down>
+	# 			pwm.set_pwm(11, 0, pwm11+reach_wiggle) #<out>&in
 
 	else:
 		print("the names of the legs is 'I II III IV")
