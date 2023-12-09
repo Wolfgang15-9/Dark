@@ -1,9 +1,9 @@
-import math
+
 import math
 from Adafruit_PCA9685 import PCA9685
 
 # Install the required package
-# pip install adafruit-circuitpython-pca9685
+# pip install adafruit-circuitpython-pca9685 
 
 class MyClass:
     def __init__(self):
