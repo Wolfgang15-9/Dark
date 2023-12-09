@@ -88,22 +88,22 @@ def move_init():
 	pwm.set_pwm(FLB_port, 0, FLB_init_pwm)
 	pwm.set_pwm(FLM_port, 0, FLM_init_pwm)
 	pwm.set_pwm(FLE_port, 0, FLE_init_pwm)
-
+	time.sleep(1)
 	pwm.set_pwm(FRB_port, 0, FRB_init_pwm)
 	pwm.set_pwm(FRM_port, 0, FRM_init_pwm)
 	pwm.set_pwm(FRE_port, 0, FRE_init_pwm)
-
+	
 	pwm.set_pwm(HLB_port, 0, HLB_init_pwm)
 	pwm.set_pwm(HLM_port, 0, HLM_init_pwm)
 	pwm.set_pwm(HLE_port, 0, HLE_init_pwm)
-
+	time.sleep(1)
 	pwm.set_pwm(HRB_port, 0, HRB_init_pwm)
 	pwm.set_pwm(HRM_port, 0, HRM_init_pwm)
 	pwm.set_pwm(HRE_port, 0, HRE_init_pwm)
-
+	
 	pwm.set_pwm(P_port, 0, P_init_pwm)
 	pwm.set_pwm(T_port, 0, T_init_pwm)
-
+	
 	pwm.set_pwm(14 , 0, 300)
 	pwm.set_pwm(15 , 0, 300)
 	try:

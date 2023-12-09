@@ -75,7 +75,7 @@ kalman_filter_Y =  Kalman_filter.Kalman_filter(0.001,0.1)
 '''
 if the robot roll over when turning, decrease this value below.
 '''
-turn_steady = 4/5  # 2/3 4/5 5/6 ...
+turn_steady = 2/3  # 2/3 4/5 5/6 ...
 
 
 def mpu6050Test():
