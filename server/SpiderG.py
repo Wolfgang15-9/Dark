@@ -3,14 +3,13 @@
 # Website	 : gewbot.com
 # Author	  : original code by William
 # Date		: 2019/09/20
-import socket
 import time
 import threading
 try:
 	import Adafruit_PCA9685
 	pwm = Adafruit_PCA9685.PCA9685()
 	pwm.set_pwm_freq(50)
-except:
+except ImportError:
 	import os
 	os.system("sudo pip3 install adafruit-pca9685")
 	import Adafruit_PCA9685
@@ -18,6 +17,7 @@ except:
 	pwm.set_pwm_freq(50)
 
 MPU_connection = 1
+
 try:
 	from mpu6050 import mpu6050
 	import PID

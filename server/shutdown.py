@@ -1,7 +1,9 @@
+from typing import Optional, Type, BaseException, TracebackType
 
 #Author Michael
 #Date 12/08/23
 #attempt to fix activated servos
+
 class PCA9685:
     def __enter__(self) -> "PCA9685":
         return self
