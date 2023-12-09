@@ -31,8 +31,6 @@ class MyClass:
 
         # Set the PWM signal for each servo on the given arm
         for channel in arms[arm]:
-            self.set_servo_pulse(channel, pulse)
-
-# Use the MyClass
-my_obj = MyClass()
+            my_obj = MyClass()
+            my_obj.set_servo_pulse(channel, pulse)
 my_obj.test_servos(1, 90)
