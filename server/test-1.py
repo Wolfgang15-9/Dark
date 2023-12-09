@@ -33,4 +33,5 @@ class MyClass:
         for channel in arms[arm]:
             my_obj = MyClass()
             my_obj.set_servo_pulse(channel, pulse)
+my_obj = MyClass()
 my_obj.test_servos(1, 90)
