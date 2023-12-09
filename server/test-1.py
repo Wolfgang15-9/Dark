@@ -1,16 +1,19 @@
 import math
+import math
+from Adafruit_PCA9685 import PCA9685
 
-class PCA9685:
-    # ... existing methods ...
+# Install the required package
+# pip install adafruit-circuitpython-pca9685
 
-    def set_servo_pulse(self, channel: int, pulse: int) -> None:
-        """Sets the Servo Pulse, Correct for the offset."""
-        pulse_length = 1000000    # 1,000,000 us per second
-        pulse_length //= 50       # 60 Hz
-        pulse_length //= 4096     # 12 bits of resolution
+class MyClass:
+    def __init__(self):
+        self.pca = PCA9685()
+
+    def set_servo_pulse(self, channel, pulse):
+        pulse_length = 4096  # 12 bits of resolution
         pulse *= 1000
         pulse //= pulse_length
-        self.set_pwm(channel, 0, pulse)
+        self.pca.set_pwm(channel, 0, pulse)
 
     def test_servos(self, arm: int, angle: int) -> None:
         """Test the servos on a given arm."""
@@ -25,13 +28,11 @@ class PCA9685:
 
         # Calculate the pulse width for the given angle
         pulse = math.radians(angle) * (2000 / math.pi) + 500
-        pulse = angle * (2000 / 180) + 500
 
         # Set the PWM signal for each servo on the given arm
         for channel in arms[arm]:
             self.set_servo_pulse(channel, pulse)
 
-# Use the PCA9685 class
-with PCA9685() as pca:
-    # Test the servos on arm 1 with a rotation of 90 degrees
-    pca.test_servos(1, 90)
+# Use the MyClass
+my_obj = MyClass()
+my_obj.test_servos(1, 90)
