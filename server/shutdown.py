@@ -1,4 +1,5 @@
-from typing import Optional, Type, BaseException, TracebackType
+from typing import Optional, Type
+from types import TracebackType
 
 #Author Michael
 #Date 12/08/23

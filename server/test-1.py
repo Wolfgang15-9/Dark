@@ -1,6 +1,7 @@
 
 import math
 from Adafruit_PCA9685 import PCA9685
+import time
 
 # Install the required package
 # pip install adafruit-circuitpython-pca9685 
@@ -16,8 +17,9 @@ class MyClass:
         pulse //= pulse_length
         self.pca.set_pwm(channel, 0, pulse)
 
-    def test_servos(self, arm: int, angle: int) -> None:
-        """Test the servos on a given arm."""
+
+    def test_servos(self, arm: int, angle_range: range, delay: float) -> None:
+        """Test the servos on a given arm by moving them through a range of angles with a delay between each activation."""
 
         # Define which PWM channels correspond to each arm
         arms = {
@@ -27,13 +29,25 @@ class MyClass:
             4: [9, 10, 11]  # PWM channels for arm 4
         }
 
-        # Calculate the pulse width for the given angle
-        pulse = math.radians(angle) * (2000 / math.pi) + 500
+        # Iterate through the range of angles
+        for angle in angle_range:
+            # Calculate the pulse width for the given angle
+            pulse = math.radians(angle) * (2000 / math.pi) + 500
 
-        # Set the PWM signal for each servo on the given arm
-        for channel in arms[arm]:
-            self.set_servo_pulse(channel, pulse)
+            # Set the PWM signal for each servo on the given arm
+            for channel in arms[arm]:
+                self.set_servo_pulse(channel, pulse)
 
+            # Delay between each activation
+            time.sleep(delay)
+
+            # Accept user input for testing
+            arm = int(input("Enter the arm number: "))
+            angle = int(input("Enter the angle: "))
+
+            # Create an instance of MyClass and test the servos
+            my_obj = MyClass()
+            my_obj.test_servos(arm, range(0, angle+1), 0.1)
 # Accept user input for testing
 arm = int(input("Enter the arm number: "))
 angle = int(input("Enter the angle: "))
