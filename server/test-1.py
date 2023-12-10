@@ -12,6 +12,7 @@ class MyClass:
     def set_servo_pulse(self, channel, pulse):
         pulse_length = 4096  # 12 bits of resolution
         pulse *= 1000
+        pulse = int(pulse)
         pulse //= pulse_length
         self.pca.set_pwm(channel, 0, pulse)
 
