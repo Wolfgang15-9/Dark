@@ -3,13 +3,14 @@
 # Website	 : gewbot.com
 # Author	  : original code by William
 # Date		: 2019/09/20
+import socket
 import time
 import threading
 try:
 	import Adafruit_PCA9685
 	pwm = Adafruit_PCA9685.PCA9685()
 	pwm.set_pwm_freq(50)
-except ImportError:
+except:
 	import os
 	os.system("sudo pip3 install adafruit-pca9685")
 	import Adafruit_PCA9685
@@ -17,8 +18,6 @@ except ImportError:
 	pwm.set_pwm_freq(50)
 
 MPU_connection = 1
-
-
 try:
 	from mpu6050 import mpu6050
 	import PID
@@ -66,19 +65,19 @@ HRE_port = 11
 P_port = 12
 T_port = 13
 
-FLB_init_pwm = 400
+FLB_init_pwm = 313
 FLM_init_pwm = 305
 FLE_init_pwm = 313
 
-FRB_init_pwm = 400
+FRB_init_pwm = 325
 FRM_init_pwm = 281
 FRE_init_pwm = 301
 
-HLB_init_pwm = 400
+HLB_init_pwm = 312
 HLM_init_pwm = 287
 HLE_init_pwm = 260
 
-HRB_init_pwm = 400
+HRB_init_pwm = 305
 HRM_init_pwm = 195
 HRE_init_pwm = 340
 
@@ -89,22 +88,22 @@ def move_init():
 	pwm.set_pwm(FLB_port, 0, FLB_init_pwm)
 	pwm.set_pwm(FLM_port, 0, FLM_init_pwm)
 	pwm.set_pwm(FLE_port, 0, FLE_init_pwm)
-	time.sleep(1)
+
 	pwm.set_pwm(FRB_port, 0, FRB_init_pwm)
 	pwm.set_pwm(FRM_port, 0, FRM_init_pwm)
 	pwm.set_pwm(FRE_port, 0, FRE_init_pwm)
-	
+
 	pwm.set_pwm(HLB_port, 0, HLB_init_pwm)
 	pwm.set_pwm(HLM_port, 0, HLM_init_pwm)
 	pwm.set_pwm(HLE_port, 0, HLE_init_pwm)
-	time.sleep(1)
+
 	pwm.set_pwm(HRB_port, 0, HRB_init_pwm)
 	pwm.set_pwm(HRM_port, 0, HRM_init_pwm)
 	pwm.set_pwm(HRE_port, 0, HRE_init_pwm)
-	
+
 	pwm.set_pwm(P_port, 0, P_init_pwm)
 	pwm.set_pwm(T_port, 0, T_init_pwm)
-	
+
 	pwm.set_pwm(14 , 0, 300)
 	pwm.set_pwm(15 , 0, 300)
 	try:

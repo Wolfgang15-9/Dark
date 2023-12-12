@@ -1,9 +1,10 @@
-from typing import Optional, Type
-from types import TracebackType
-
 #Author Michael
 #Date 12/08/23
 #attempt to fix activated servos
+
+from typing import Optional, Type
+from types import TracebackType
+
 
 class PCA9685:
     def __enter__(self) -> "PCA9685":
@@ -24,6 +25,7 @@ class PCA9685:
     def reset(self) -> None:
         """Reset the pca9685."""
         # Implement the reset logic here
+        print("Resetting PCA9685")
 
 # Use the PCA9685 class
 with PCA9685() as pca:
