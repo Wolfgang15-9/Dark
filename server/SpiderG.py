@@ -66,19 +66,19 @@ HRE_port = 11
 P_port = 12
 T_port = 13
 
-FLB_init_pwm = 400
+FLB_init_pwm = 300
 FLM_init_pwm = 305
 FLE_init_pwm = 313
 
-FRB_init_pwm = 400
+FRB_init_pwm = 300
 FRM_init_pwm = 281
 FRE_init_pwm = 301
 
-HLB_init_pwm = 400
+HLB_init_pwm = 300
 HLM_init_pwm = 287
 HLE_init_pwm = 260
 
-HRB_init_pwm = 400
+HRB_init_pwm = 300
 HRM_init_pwm = 195
 HRE_init_pwm = 340
 
